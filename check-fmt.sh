@@ -21,8 +21,8 @@ then
     status=1
 fi
 
-go get golang.org/x/tools/cmd/goimports
-out=`goimports -l $dirs`
+go get -u golang.org/x/tools/cmd/goimports
+out=`goimports -srcdir . -l $dirs`
 
 if [ "${out}" != "" ]
 then
