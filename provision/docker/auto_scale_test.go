@@ -699,6 +699,7 @@ func (s *AutoScaleSuite) TestAutoScaleConfigRunMemoryBasedMultipleNodes(c *check
 	c.Assert(evts[0].Successful, check.Equals, true)
 	c.Assert(evts[0].Error, check.Equals, "")
 	c.Assert(evts[0].Reason, check.Equals, "can't add 4194304 bytes to an existing node, adding 2 nodes")
+	c.Assert(evts[0].Log, check.Matches, `(?s).*new machine created: .*? - started!.*new machine created: .*? - started!.*`)
 	c.Assert(evts[0].Nodes, check.HasLen, 2)
 	nodes, err := s.p.cluster.Nodes()
 	c.Assert(err, check.IsNil)
